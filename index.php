@@ -27,6 +27,6 @@ $errorHanlder->setDefaultErrorHandler($container->get(ErrorHandlerInterface::cla
 
 (require_once 'routes/users.php')($app);
 (require_once 'routes/productos.php')($app);
-
+(require_once 'routes/pedidos.php')($app);
 
 $app->run();

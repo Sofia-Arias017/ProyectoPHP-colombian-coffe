@@ -15,6 +15,9 @@ use App\Infrastructure\Repositories\EloquentUserRepository;
 use App\Domain\Repositories\ProductosRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentProductosRepository;
 
+use App\Domain\Repositories\PedidosRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentPedidosRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
@@ -25,6 +28,9 @@ $container->set(ProductosRepositoryInterface::class,function(){
     return new EloquentProductosRepository();
 });
 
+$container->set(PedidosRepositoryInterface::class,function(){
+    return new EloquentPedidosRepository();
+});
 
 
 $container->set(ErrorHandlerInterface::class, function () use ($container){
