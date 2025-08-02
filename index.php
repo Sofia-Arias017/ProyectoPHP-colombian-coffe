@@ -30,5 +30,5 @@ $errorHanlder->setDefaultErrorHandler($container->get(ErrorHandlerInterface::cla
 (require_once 'routes/pedidos.php')($app);
 (require_once 'routes/detalles_pedidos.php')($app);
 (require_once 'routes/categorias.php')($app);
-
+(require_once 'routes/proveedores.php')($app);
 $app->run();

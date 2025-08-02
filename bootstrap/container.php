@@ -24,6 +24,9 @@ use App\Infrastructure\Repositories\EloquentDetallesPedidosRepository;
 use App\Domain\Repositories\CategoriasRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentCategoriasRepository;
 
+use App\Domain\Repositories\ProveedoresRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentProveedoresRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
@@ -46,6 +49,10 @@ $container->set(DetallesPedidosRepositoryInterface::class,function(){
 
 $container->set(CategoriasRepositoryInterface::class,function(){
     return new EloquentCategoriasRepository();
+});
+
+$container->set(ProveedoresRepositoryInterface::class,function(){
+    return new EloquentProveedoresRepository();
 });
 
 $container->set(ErrorHandlerInterface::class, function () use ($container){
