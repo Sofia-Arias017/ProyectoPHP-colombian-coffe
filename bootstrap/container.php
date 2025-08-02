@@ -27,6 +27,9 @@ use App\Infrastructure\Repositories\EloquentCategoriasRepository;
 use App\Domain\Repositories\ProveedoresRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentProveedoresRepository;
 
+use App\Domain\Repositories\InventarioRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentInventarioRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
@@ -53,6 +56,10 @@ $container->set(CategoriasRepositoryInterface::class,function(){
 
 $container->set(ProveedoresRepositoryInterface::class,function(){
     return new EloquentProveedoresRepository();
+});
+
+$container->set(InventarioRepositoryInterface::class,function(){
+    return new EloquentInventarioRepository();
 });
 
 $container->set(ErrorHandlerInterface::class, function () use ($container){
