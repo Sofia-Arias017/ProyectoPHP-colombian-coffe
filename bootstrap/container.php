@@ -12,10 +12,17 @@ use Slim\Interfaces\ErrorHandlerInterface;
 use App\Domain\Repositories\UserRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentUserRepository;
 
+use App\Domain\Repositories\ProductosRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentProductosRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
     return new EloquentUserRepository();
+});
+
+$container->set(ProductosRepositoryInterface::class,function(){
+    return new EloquentProductosRepository();
 });
 
 
