@@ -20,7 +20,7 @@ CREATE TABLE productos (
     precio DECIMAL(10,2) NOT NULL,
     stock INT DEFAULT 0,
     categoria VARCHAR(50),
-    sku VARCHAR(20) UNIQUE
+    sku VARCHAR(20)
 );
 
 -- 2. Tabla Pedidos 
