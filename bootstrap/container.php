@@ -21,6 +21,9 @@ use App\Infrastructure\Repositories\EloquentPedidosRepository;
 use App\Domain\Repositories\DetallesPedidosRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentDetallesPedidosRepository;
 
+use App\Domain\Repositories\CategoriasRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentCategoriasRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
@@ -38,6 +41,11 @@ $container->set(PedidosRepositoryInterface::class,function(){
 
 $container->set(DetallesPedidosRepositoryInterface::class,function(){
     return new EloquentDetallesPedidosRepository();
+});
+
+
+$container->set(CategoriasRepositoryInterface::class,function(){
+    return new EloquentCategoriasRepository();
 });
 
 $container->set(ErrorHandlerInterface::class, function () use ($container){
