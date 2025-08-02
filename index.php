@@ -32,4 +32,6 @@ $errorHanlder->setDefaultErrorHandler($container->get(ErrorHandlerInterface::cla
 (require_once 'routes/categorias.php')($app);
 (require_once 'routes/proveedores.php')($app);
 (require_once 'routes/inventario.php')($app);
+(require_once 'routes/facturas.php')($app);
+
 $app->run();

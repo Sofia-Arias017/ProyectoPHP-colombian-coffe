@@ -30,6 +30,9 @@ use App\Infrastructure\Repositories\EloquentProveedoresRepository;
 use App\Domain\Repositories\InventarioRepositoryInterface;
 use App\Infrastructure\Repositories\EloquentInventarioRepository;
 
+use App\Domain\Repositories\FacturasRepositoryInterface;
+use App\Infrastructure\Repositories\EloquentFacturasRepository;
+
 $container = new Container();
 
 $container->set(UserRepositoryInterface::class,function(){
@@ -61,6 +64,12 @@ $container->set(ProveedoresRepositoryInterface::class,function(){
 $container->set(InventarioRepositoryInterface::class,function(){
     return new EloquentInventarioRepository();
 });
+
+
+$container->set(FacturasRepositoryInterface::class,function(){
+    return new EloquentFacturasRepository();
+});
+
 
 $container->set(ErrorHandlerInterface::class, function () use ($container){
     return new CustomErrorHandler(
