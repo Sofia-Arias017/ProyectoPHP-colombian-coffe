@@ -12,5 +12,5 @@ return function (App $app) {
         $group->post('', [InventarioController::class, 'store']);
         $group->put('/{id}', [InventarioController::class, 'update']);
         $group->delete('/{id}', [InventarioController::class, 'destroy']);
-    })->add(new RoleMiddleware('admin'))->add(new AuthMiddleware());
+    });
 };

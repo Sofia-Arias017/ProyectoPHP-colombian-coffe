@@ -12,5 +12,5 @@ return function (App $app) {
         $group->post('', [ProveedoresController::class, 'store']);
         $group->put('/{id}', [ProveedoresController::class, 'update']);
         $group->delete('/{id}', [ProveedoresController::class, 'destroy']);
-    })->add(new RoleMiddleware('admin'))->add(new AuthMiddleware());
+    });
 };

@@ -12,5 +12,5 @@ return function (App $app) {
         $group->post('', [FacturasController::class, 'store']);
         $group->put('/{id}', [FacturasController::class, 'update']);
         $group->delete('/{id}', [FacturasController::class, 'destroy']);
-    })->add(new RoleMiddleware('admin'))->add(new AuthMiddleware());
+    });
 };

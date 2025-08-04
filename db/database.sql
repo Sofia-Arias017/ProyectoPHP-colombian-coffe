@@ -14,6 +14,8 @@ CREATE TABLE `usuarios`(
 );
 
 -- 1. Tabla Productos
+
+DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -45,6 +47,7 @@ CREATE TABLE detalles_pedido (
 );
 
 -- 4. Tabla Categorias
+DROP TABLE IF EXISTS categorias;
 CREATE TABLE categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -87,16 +90,17 @@ CREATE TABLE facturas (
 
 -- Productos 
 INSERT INTO productos (nombre, precio, stock, categoria, sku) VALUES
-('Laptop HP EliteBook', 1200.00, 15, 'Electrónica', 'LP-HP-011'),
-('Mouse Inalámbrico', 25.99, 50, 'Accesorios', 'MS-WL-022'),
-('Teclado Mecánico', 89.99, 30, 'Accesorios', 'KB-MC-033'),
-('Monitor 24"', 199.99, 20, 'Electrónica', 'MN-24-044'),
-('Disco SSD 500GB', 79.99, 40, 'Componentes', 'SS-500-055'),
-('Impresora Multifuncional', 149.99, 10, 'Oficina', 'PR-MF-066'),
-('Router WiFi', 59.99, 25, 'Redes', 'RT-WF-077'),
-('Webcam HD', 45.50, 35, 'Accesorios', 'WC-HD-088'),
-('Altavoces Bluetooth', 65.00, 18, 'Audio', 'SP-BT-099'),
-('Tablet 10"', 249.99, 12, 'Electrónica', 'TB-10-101');
+('Café en Grano Premium 500g', 12.99, 40, 'Café', 'CF-GR-001'),
+('Café Molido Orgánico 250g', 8.50, 50, 'Café', 'CF-ML-002'),
+('Cafetera Italiana 6 Tazas', 29.99, 25, 'Accesorios', 'CF-IT-003'),
+('Prensa Francesa de Vidrio', 22.00, 30, 'Accesorios', 'CF-PF-004'),
+('Filtro de Papel Reutilizable', 6.99, 60, 'Accesorios', 'CF-FR-005'),
+('Taza de Cerámica 300ml', 5.50, 100, 'Vajilla', 'CF-TZ-006'),
+('Espumador de Leche Eléctrico', 19.99, 15, 'Accesorios', 'CF-EL-007'),
+('Kit Barista Profesional', 89.00, 10, 'Equipos', 'CF-KT-008'),
+('Café Descafeinado 500g', 10.00, 35, 'Café', 'CF-DC-009'),
+('Jarabe de Vainilla para Café 250ml', 7.50, 20, 'Complementos', 'CF-JV-010');
+
 
 -- PEDIDOS
 INSERT INTO pedidos (usuario_id, fecha_pedido, total, estado) VALUES
@@ -113,71 +117,75 @@ INSERT INTO pedidos (usuario_id, fecha_pedido, total, estado) VALUES
 
 -- Detalles_Pedido
 INSERT INTO detalles_pedido (pedido_id, producto_id, cantidad, precio_unitario) VALUES
-(1, 1, 1, 1200.00),
-(1, 4, 1, 199.99),
-(2, 2, 2, 25.99),
-(2, 3, 1, 89.99),
-(3, 5, 2, 79.99),
-(3, 9, 2, 65.00),
-(4, 3, 1, 89.99),
-(5, 4, 1, 199.99),
-(5, 7, 1, 59.99),
-(5, 8, 1, 45.50),
-(5, 10, 1, 249.99),
-(6, 4, 1, 199.99),
-(7, 9, 1, 65.00),
-(8, 10, 1, 249.99),
-(9, 8, 1, 45.50),
-(10, 5, 1, 79.99);
+(1, 1, 2, 18.99),
+(1, 4, 1, 49.99),
+(2, 2, 1, 22.50),
+(2, 3, 1, 35.00),
+(3, 5, 3, 8.50),
+(3, 9, 2, 39.99),
+(4, 3, 2, 35.00),
+(5, 4, 1, 49.99),
+(5, 7, 1, 5.99),
+(5, 8, 1, 9.99),
+(5, 10, 1, 12.99),
+(6, 4, 2, 49.99),
+(7, 9, 1, 39.99),
+(8, 10, 2, 12.99),
+(9, 8, 1, 9.99),
+(10, 5, 2, 8.50);
+
 
 -- Categorias
 INSERT INTO categorias (nombre, descripcion) VALUES
-('Electrónica', 'Dispositivos electrónicos y computadoras'),
-('Accesorios', 'Accesorios para computadoras'),
-('Componentes', 'Partes internas para computadoras'),
-('Oficina', 'Equipos de oficina'),
-('Redes', 'Dispositivos de red y conectividad'),
-('Audio', 'Equipos y accesorios de audio'),
-('Impresión', 'Impresoras y suministros'),
-('Almacenamiento', 'Discos duros y unidades de estado sólido'),
-('Seguridad', 'Equipos de seguridad informática'),
-('Software', 'Programas y licencias');
+('Café en grano', 'Variedades de café en grano para moler y preparar'),
+('Café molido', 'Café previamente molido listo para preparar'),
+('Bebidas especiales', 'Cafés fríos, lattes, capuccinos y más'),
+('Accesorios de café', 'Filtros, prensas, molinillos y otros utensilios'),
+('Postres', 'Acompañamientos como pasteles, galletas y brownies'),
+('Tés e infusiones', 'Bebidas alternativas como tés y hierbas'),
+('Café orgánico', 'Café cultivado sin pesticidas ni químicos'),
+('Regalos y kits', 'Cajas de regalo, kits de barista y combos'),
+('Vasos y termos', 'Vasos reutilizables, termos y tazas especiales'),
+('Merchandising', 'Camisas, bolsas y artículos con temática cafetera');
+
 
 -- Proveedores
 INSERT INTO proveedores (nombre, contacto, telefono, email) VALUES
-('TecnoSuministros', 'Roberto Mendoza', '555-1111', 'ventas@tecnosuministros.com'),
-('ElectroParts', 'Laura Jiménez', '555-2222', 'contacto@electroparts.com'),
-('CompuGlobal', 'Carlos Ríos', '555-3333', 'info@compuglobal.net'),
-('DistriTec', 'Ana Sánchez', '555-4444', 'ventas@distritec.mx'),
-('TecnoImport', 'Miguel Ángel', '555-5555', 'miguel@tecnoimport.com'),
-('DigitalWare', 'Patricia López', '555-6666', 'pedidos@digitalware.com'),
-('HardTech', 'Fernando Castro', '555-7777', 'contacto@hardtech.mx'),
-('CompuProveedores', 'Sofía Ramírez', '555-8888', 'sofia@compuproveedores.com'),
-('TecnoRed', 'Jorge Morales', '555-9999', 'jorge@tecnored.net'),
-('GlobalElectronics', 'Elena Díaz', '555-0000', 'elena@globalelectronics.com');
+('Café Andino', 'Roberto Mendoza', '555-1111', 'ventas@cafeandino.com'),
+('Granos Selectos', 'Laura Jiménez', '555-2222', 'contacto@granosselectos.com'),
+('Tostadores del Sur', 'Carlos Ríos', '555-3333', 'info@tostadoresdelsur.net'),
+('Distribuidora Aroma', 'Ana Sánchez', '555-4444', 'ventas@distribuidoraroma.mx'),
+('ImportCafé', 'Miguel Ángel', '555-5555', 'miguel@importcafe.com'),
+('Sabores de Altura', 'Patricia López', '555-6666', 'pedidos@saboresdealtura.com'),
+('CaféTech', 'Fernando Castro', '555-7777', 'contacto@cafetech.mx'),
+('ProCafé Express', 'Sofía Ramírez', '555-8888', 'sofia@procafe.com'),
+('Red de Baristas', 'Jorge Morales', '555-9999', 'jorge@redbaristas.net'),
+('Global Beans', 'Elena Díaz', '555-0000', 'elena@globalbeans.com');
+
 
 -- Inventario
 INSERT INTO inventario (producto_id, cantidad, ubicacion) VALUES
-(1, 15, 'Almacén A'),
-(2, 50, 'Almacén B'),
-(3, 30, 'Almacén A'),
-(4, 20, 'Almacén C'),
-(5, 40, 'Almacén B'),
-(6, 10, 'Almacén A'),
-(7, 25, 'Almacén C'),
-(8, 35, 'Almacén B'),
-(9, 18, 'Almacén A'),
-(10, 12, 'Almacén C');
+(1, 100, 'Depósito Central'),
+(2, 250, 'Bodega Norte'),
+(3, 150, 'Depósito Central'),
+(4, 80, 'Almacén Cápsulas'),
+(5, 200, 'Bodega Norte'),
+(6, 60, 'Depósito Central'),
+(7, 120, 'Almacén Cápsulas'),
+(8, 170, 'Bodega Norte'),
+(9, 90, 'Depósito Central'),
+(10, 45, 'Almacén Cápsulas');
+
 
 -- Facturas
 INSERT INTO facturas (pedido_id, fecha_emision, subtotal, impuestos, total, estado_pago) VALUES
-(1, '2023-10-01', 1399.99, 50.00, 1449.99, 'pagado'),
-(2, '2023-10-02', 165.98, 10.00, 175.98, 'pagado'),
-(3, '2023-10-03', 319.98, 10.00, 329.98, 'pendiente'),
-(4, '2023-10-04', 89.99, 0.00, 89.99, 'pagado'),
-(5, '2023-10-05', 505.49, 10.00, 515.49, 'pagado'),
-(6, '2023-10-06', 199.99, 0.00, 199.99, 'pendiente'),
-(7, '2023-10-07', 65.00, 0.00, 65.00, 'pendiente'),
-(8, '2023-10-08', 249.99, 0.00, 249.99, 'pagado'),
-(9, '2023-10-09', 45.50, 0.00, 45.50, 'vencido'),
-(10, '2023-10-10', 79.99, 0.00, 79.99, 'pendiente');
+(1, '2023-10-01', 13400.00, 640.00, 14040.00, 'pagado'),
+(2, '2023-10-02', 21000.00, 840.00, 21840.00, 'pagado'),
+(3, '2023-10-03', 42800.00, 1712.00, 44512.00, 'pendiente'),
+(4, '2023-10-04', 8950.00, 358.00, 9308.00, 'pagado'),
+(5, '2023-10-05', 18400.00, 736.00, 19136.00, 'pagado'),
+(6, '2023-10-06', 7950.00, 318.00, 8268.00, 'pendiente'),
+(7, '2023-10-07', 7400.00, 296.00, 7696.00, 'pendiente'),
+(8, '2023-10-08', 21450.00, 858.00, 22308.00, 'pagado'),
+(9, '2023-10-09', 6500.00, 260.00, 6760.00, 'vencido'),
+(10, '2023-10-10', 15400.00, 616.00, 16016.00, 'pendiente');

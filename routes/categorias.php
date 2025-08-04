@@ -12,5 +12,5 @@ return function (App $app) {
         $group->post('', [CategoriasController::class, 'store']);
         $group->put('/{id}', [CategoriasController::class, 'update']);
         $group->delete('/{id}', [CategoriasController::class, 'destroy']);
-    })->add(new RoleMiddleware('admin'))->add(new AuthMiddleware());
+    });
 };

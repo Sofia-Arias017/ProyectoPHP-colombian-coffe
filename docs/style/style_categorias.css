@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fef9f3;
+    color: #2c2c2c;
+}
+
+header {
+    background-color: #4b2e2e;
+    padding: 30px 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 1.5px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #d8a17e;
+}
+
+.carrusel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+}
+
+.carrusel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff8f1;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    scrollbar-width: none;
+}
+
+.carrusel::-webkit-scrollbar {
+    display: none;
+}
+
+.tarjeta {
+    flex: 0 0 280px;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05);
+}
+
+.tarjeta h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #5c2e2e;
+}
+
+.tarjeta p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.btn-carrusel {
+    background-color: #a5582f;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.btn-carrusel:hover {
+    background-color: #7e3c21;
+}
+.imagen-abuelo {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.imagen-abuelo img {
+  max-width: 250px; /* tamaño moderado */
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* esquinas redondeadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* sombra sutil */
+  transition: transform 0.3s ease;
+}
+
+.imagen-abuelo img:hover {
+  transform: scale(1.05); /* efecto zoom al pasar el cursor */
+}
+
+@media (max-width: 768px) {
+    .tarjeta {
+        flex: 0 0 240px;
+    }
+
+    .btn-carrusel {
+        font-size: 1.5rem;
+        padding: 8px 14px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

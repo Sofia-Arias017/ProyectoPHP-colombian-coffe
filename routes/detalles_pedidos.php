@@ -12,5 +12,5 @@ return function (App $app) {
         $group->post('', [DetallesPedidosController::class, 'store']);
         $group->put('/{id}', [DetallesPedidosController::class, 'update']);
         $group->delete('/{id}', [DetallesPedidosController::class, 'destroy']);
-    })->add(new RoleMiddleware('admin'))->add(new AuthMiddleware());
+    });
 };
