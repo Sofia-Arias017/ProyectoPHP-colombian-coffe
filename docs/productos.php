@@ -42,6 +42,7 @@ curl_close($ch);
       <a href="./proveedores.php">Proveedores</a>
       <a href="./inventario.php">Inventario</a>
       <a href="./facturas.php">Facturas</a>
+      <a href="./mapa.php">Mapa</a>
     </nav>
     </header>
 

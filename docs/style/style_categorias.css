@@ -140,3 +140,23 @@ nav a:hover {
         gap: 10px;
     }
 }
+
+    #map {
+      height: 600px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 30px auto;
+      border: 2px solid #a3753c;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+
+    .leaflet-popup-content {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .leaflet-container a {
+      color: #a3753c;
+    }
