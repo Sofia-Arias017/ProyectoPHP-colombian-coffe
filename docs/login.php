@@ -1,11 +1,10 @@
 <?php
-// Cargar autoload de Composer (importante si usas namespaces)
-require_once __DIR__ . '/../vendor/autoload.php'; // Ajusta si es necesario
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Infrastructure\Database\Connection;
 use Illuminate\Database\Capsule\Manager as DB;
 
-session_start(); // Asegúrate de iniciar sesión
+session_start();
 
 $mensaje = "";
 
@@ -15,7 +14,6 @@ if ($conexion !== true) {
     die($conexion); 
 }
 
-// Si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $correo = trim($_POST["correo"]);
     $clave = trim($_POST["clave"]);
@@ -23,18 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     if (empty($correo) || empty($clave)) {
         $mensaje = "Debes completar todos los campos.";
     } else {
-        // Acceso Admin por defecto
-        if ($correo === "Adrian@gmail.com" && $clave === "campus2023") {
-            $_SESSION['usuario_id'] = 0; 
-            $_SESSION['usuario_nombre'] = "Administrador";
-            $_SESSION['usuario_email'] = $correo;
-            $_SESSION['usuario_rol'] = "admin";
-
-            header("Location: variedadesDeCafeAdmin.php");
-            exit();
-        }
-
-        // Buscar usuario en BD
         $usuario = DB::table('usuarios')->where('email', $correo)->first();
 
         if ($usuario && password_verify($clave, $usuario->password)) {
@@ -51,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
